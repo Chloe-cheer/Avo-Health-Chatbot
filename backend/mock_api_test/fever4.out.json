@@ -1,0 +1,11 @@
+{
+    "question": [
+        "vomiting"
+    ],
+    "probability": {
+        "'Bacterial infections'": 70,
+        "Animal bites": 40,
+        "Poisoning": 30
+    },
+    "endDiagnose": 0
+}

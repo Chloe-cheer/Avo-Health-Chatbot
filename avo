@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -z "$1" ];
+then
+    docker run --name my-own-avo --rm -dit -p 3000-3002:3000-3002 -p 3306:3306 --env-file .env avo-docker # /bin/sh
+elif [ "$1" == "attach" ];
+then
+    docker attach my-own-avo
+
+    # Docker supports a keyboard combination to gracefully detach
+    # from a container. Press Ctrl-P, followed by Ctrl-Q,
+    # to detach from your connection.
+
+elif [ "$1" == "stop" ];
+then
+    docker stop my-own-avo
+elif [ "$1" == "build" ];
+then
+    docker build -t avo-docker .
+elif [ "$1" == "save" ];
+then
+    docker image save avo-docker -o avo-docker.tar
+elif [ "$1" == "load" ];
+then
+    docker image load -i avo-docker.tar
+fi

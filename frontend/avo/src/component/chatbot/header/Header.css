@@ -1,0 +1,53 @@
+.chat-header {
+    border-bottom: 4px solid #05a081;
+    border-radius: 9px 9px 0 0;
+    flex: none;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4.5px;
+    background: #c2e7da;
+}
+.chat-header .profile {
+    display: flex;
+    justify-content: flex-start;
+}
+.chat-header .text {
+    color: black;
+    padding: 10px;
+}
+.chat-header .text h4 {
+    margin-top: 10px;
+}
+.chat-header .icon {
+    background: url("../../../img/doctor-avocado-android.gif") #75f4b4;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 70% 70%, cover;
+    background-position: center, center;
+    border: solid white;
+    margin-left: 5px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    margin-right: 12px;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+}
+.chat-header .dots {
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../../img/dropdown.png");
+    height: 52px;
+    width: 52px;
+    margin-right: 10px;
+    z-index: 2;
+}
+.app-container .chat-container .chat-header .dot {
+    margin: 9px 13.5px 9px 0;
+    width: 9px;
+    height: 9px;
+    background: #05a081;
+    border-radius: 50%;
+}

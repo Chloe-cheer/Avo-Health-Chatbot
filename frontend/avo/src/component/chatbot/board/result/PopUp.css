@@ -1,0 +1,38 @@
+
+
+.modal {
+  box-sizing: content-box;
+  position: relative;
+  margin-bottom: 1vh;
+  width: 100%;
+  background-color: white;
+  border: 2px solid black;
+  display: inline-block;
+  height:auto;
+}
+
+.close {
+  color: rgba(255, 0, 0, 0.0001);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  margin-right: 2%;
+  margin-top: 2%;
+  background-image: url("../../../../img/closen.png");
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.close:hover {
+  cursor: pointer;
+  background-image: url("../../../../img/closeh.png");
+}
+
+.popup-box {
+  margin: 5%;
+}

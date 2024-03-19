@@ -1,0 +1,12 @@
+{
+    "question": [
+        "sym_f"
+    ],
+    "probability": {
+        "con_a": 70,
+        "con_b": 80,
+        "con_c": 40,
+        "con_d": 0
+    },
+    "endDiagnose": 0
+}

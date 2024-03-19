@@ -1,0 +1,122 @@
+const dotenv = require('dotenv');
+dotenv.config();
+// Express framework
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const Neo4jApi = require('./neo4j-api');
+
+const app = express();
+const db = new Neo4jApi();
+const port = process.env.PORT;
+const N_QUESTIONS = process.env.N;
+
+module.exports = app
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+app.post('/Diagnosis', async (req, res) => {
+  let seen_symptoms = [];
+  let answered_symp = [];
+  let answers = req.body.validAnswers;
+  if (!answers) {
+    res.status(404).send();
+    return;
+  }
+  for (const [condition, response] of Object.entries(answers)) {
+    //console.log(condition, response);
+    if (response === 1) {
+      seen_symptoms = seen_symptoms.concat(condition);
+    }
+    answered_symp = answered_symp.concat(condition);
+  }
+  
+  console.log(seen_symptoms, answered_symp)
+
+  let results = [];
+  for (let i = 0; i < seen_symptoms.length; i++) {
+    console.log("get one symptom");
+    await db.getConditions(seen_symptoms[i])
+      .then((nodes) => {
+        //console.log(typeof(nodes));
+        results = results.concat(nodes);
+      })
+      .catch(error => res.status(404).send(error));
+  }
+  // loop result array to count the occurrence of each disease
+  let disease_count = {};
+  let numSymp = {};
+  for (let name of results) {
+    if (disease_count.hasOwnProperty(name)) {
+      disease_count[name] += 1;
+    } else {
+      // add to size object at first seen
+      disease_count[name] = 1;
+      await db.nodeSize(name)
+        .then((n_children) => {
+          numSymp[name] = n_children[0];
+          // console.log([name, n_children])
+        })
+        .catch(error => res.status(500).send(error));
+    }
+  }
+  //Calculate the probabilities
+  // divide occurrence by number of symptoms under a disease
+  for (const [key, value] of Object.entries(numSymp)) {
+    // console.log([key, disease_count[key], value, disease_count[key]*100/value])
+    disease_count[key] /= (value / 100); // a*100 / b == a / (b/100)
+  }
+  // use reduce to find the condition with max probability
+  // get the highest disease with symptoms
+  let currDisease = Object.keys(disease_count)
+                          .reduce(function(a, b){
+                              return disease_count[a] > disease_count[b] ? a : b
+                          });
+  //sort the probabilities from big to small
+  let sort_Disease_count = {};
+  let sortDisease = Object.keys(disease_count)
+                          .sort(function (a, b){
+                              return disease_count[b] - disease_count[a];
+                          });
+
+  //recalculate the probabilities
+  for(let i = 0; i < sortDisease.length; i++){
+    sort_Disease_count[sortDisease[i]] = disease_count[sortDisease[i]];
+  }
+  console.log(currDisease, disease_count[currDisease]);
+
+  let endDiagnose = 0;
+  let finalReturn = {};
+  if (disease_count[currDisease] >= 95) {
+    endDiagnose = 1;
+    finalReturn = {"probability": sort_Disease_count,
+                   "endDiagnose": endDiagnose};
+    res.json(finalReturn);
+  } else {
+
+    let currSymps = {};
+    await db.getSymptoms (currDisease)
+      .then((name) => {
+        currSymps = name;
+      })
+      .catch(error => res.status(404).send(error));
+
+    //exclude the mentioned symptoms
+    currSymps = currSymps.filter(function (symp) {
+      return !answered_symp.includes(symp);
+    });
+
+    // build question object
+    const question = currSymps.slice(0, N_QUESTIONS);
+
+    finalReturn = { "question": question,
+                    "probability": sort_Disease_count,
+                    "endDiagnose": endDiagnose};
+    res.json(finalReturn);
+  }
+})
+
+app.listen(port,
+  () => console.log(`Server listening on http://localhost:${port}`));

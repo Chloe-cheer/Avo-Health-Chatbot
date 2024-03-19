@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+h1 {
+  font-size: 7vh;
+}
+
+h2 {
+  font-size: 4.5vh;
+}
+
+html,
+body,
+#app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans", Sans-Serif;
+  background: #C2E7DA;
+  color: #4F4E4E;
+  background-attachment: fixed;
+}
+
+#app,
+body,
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 5vw 10vw 5vw 10vw;
+}

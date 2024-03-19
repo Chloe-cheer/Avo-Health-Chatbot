@@ -1,0 +1,16 @@
+.msg-container {
+    background: white;
+    padding: 15px 15px 0 15px;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 56vh;
+}
+.msg-container.bot-message-container {
+    flex: none;
+    display: flex;
+}
+.msg-container.user-message-container {
+    align-self: flex-end;
+}

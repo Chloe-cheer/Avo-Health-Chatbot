@@ -1,0 +1,11 @@
+{
+    "question": [
+        "headache"
+    ],
+    "probability": {
+        "'Bacterial infections'": 60,
+        "Animal bites": 30,
+        "Poisoning": 20
+    },
+    "endDiagnose": 0
+}

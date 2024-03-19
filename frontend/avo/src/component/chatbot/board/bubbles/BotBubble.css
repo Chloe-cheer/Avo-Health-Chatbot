@@ -1,0 +1,39 @@
+.bot-message-container {
+    flex: none;
+    display: flex;
+}
+.bot-message-container .bot-avatar {
+    background: url("../../../../img/doctor-avocado-android.gif") #75F4B4 ;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 70% 70%, cover;
+    background-position: center, center;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    margin-right: 1vw;
+}
+.bot-message-container:first-child .chat-bubble {
+  -webkit-animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.9s both;
+          animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.9s both;
+}
+.chat-bubble {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 15px;
+  max-width: 60%;
+  /*overflow-wrap: normal;*/
+  word-wrap: normal ;
+  /* word-break: normal ; */
+  /*hyphens: auto;*/
+  opacity: 0;
+  -webkit-animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
+          animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
+  will-change: transform;
+}
+.chat-bubble.bot {
+  border-top-left-radius: 0;
+  background: #F0F0F0;
+  color: black;
+  transform-origin: top left;
+}

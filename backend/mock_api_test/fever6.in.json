@@ -1,0 +1,10 @@
+{
+    "answers": {
+        "fever": 1,
+        "headache": 0,
+        "coughing": 1,
+        "nausea": 1,
+        "vomiting": 1,
+        "feeling tired or fatigued": 1
+    }
+}

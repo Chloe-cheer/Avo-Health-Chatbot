@@ -1,0 +1,9 @@
+{
+    "probability": {
+        "con_a": 80,
+        "con_b": 95,
+        "con_c": 60,
+        "con_d": 0
+    },
+    "endDiagnose": 1
+}

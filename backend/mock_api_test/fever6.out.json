@@ -1,0 +1,11 @@
+{
+    "question": [
+        ""
+    ],
+    "probability": {
+        "'Bacterial infections'": 95,
+        "Animal bites": 60,
+        "Poisoning": 40
+    },
+    "endDiagnose": 1
+}

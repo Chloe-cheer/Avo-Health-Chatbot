@@ -1,0 +1,64 @@
+.input-container {
+    border-top: 4px solid #05a081;
+    border-radius: 0 0 12px 12px;
+    z-index: 30;
+    flex: none;
+    height: 14vh;
+    max-height: 100px;
+    background: white;
+    display: flex;
+    justify-content: stretch;
+    transition: background 0.3s ease;
+}
+.input-container input {
+    font-weight: 700;
+    flex: auto;
+    background: transparent;
+    border: none;
+    font-family: "Noto Sans", Sans-Serif;
+    color: black;
+    font-size: 1rem;
+    padding: 1.5rem;
+}
+.input-container *::-moz-placeholder {
+    color: #d4d4d4;
+}
+.input-container *:-ms-input-placeholder {
+    color: #d4d4d4;
+}
+.input-container *::placeholder {
+    color: #d4d4d4;
+}
+.input-container .input-submit {
+    margin: 1.5vh;
+    border: none;
+    border-radius: 50%;
+    width: 10vh;
+    height: 10vh;
+    position: relative;
+}
+.input-container .input-submit-norm {
+    border: 0;
+}
+.input-container .input-submit-norm img {
+    background-repeat: no-repeat;
+    background-size: 5vh 5vh;
+    margin: 2%;
+    border: none;
+    width: 5vh;
+    height: 5vh;
+    position: relative;
+}
+
+.input-container form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+}
+
+#chat:focus {
+    border: 0;
+}

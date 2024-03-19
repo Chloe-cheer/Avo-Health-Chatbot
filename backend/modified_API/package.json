@@ -1,0 +1,25 @@
+{
+  "name": "Disease-API",
+  "version": "1.0.0",
+  "description": "An symptom diagnosis API on Heroku using Neo4j and NodeJS",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "mocha --timeout 10000"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "~4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^8.2.1",
+    "neo4j-driver": "^1.1.0-M02",
+    "nodemon": "^2.0.5"
+  },
+  "main": "server.js"
+}

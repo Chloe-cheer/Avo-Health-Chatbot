@@ -1,0 +1,42 @@
+.line {
+    display: block;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+input.cb {
+      background-image: none !important;
+ }
+
+button.select-form {
+    margin-bottom: 0;
+}
+
+button.selected-pressed {
+    margin-bottom: 0;
+    background-color: #05A081;
+    color: white;
+    border-color: white;
+}
+
+button:hover.selected-pressed {
+    cursor: not-allowed;
+    margin-bottom: 0;
+    background-color: #05A081;
+    color: white;
+    border-color: white;
+    text-decoration: none;
+}
+
+.chat-bubble.bot.select-form {
+    padding: 0;
+    background-color: white;
+    height: 100%;
+    border: 1px solid #05a081;
+    margin-bottom: 0;
+    min-width: 40%;
+}
+
+.selection {
+    margin: 7%;
+}
